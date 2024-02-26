@@ -3,13 +3,15 @@ import { getMenu } from '../../services/apiRestaurant'
 import MenuItem from './MenuItem'
 
 function Menu() {
-    const menu = useLoaderData
-    console.log(menu)
-    return <ul>
-      {menu.map((pizza) => {
+    const menu = useLoaderData()
+
+    return (
+    <ul>
+      {menu.map((pizza) => (
        <MenuItem pizza={pizza} key={pizza.id}  />
-    })}
+    ))}
     </ul>
+    )
   }
 
 export async function loader() {
@@ -17,4 +19,4 @@ export async function loader() {
   return menu
 }
   
-export default Menu;
+export default Menu
