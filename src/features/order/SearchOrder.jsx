@@ -10,6 +10,10 @@ function SearchOrder() {
   function handleSubmit(e) {
     e.preventDefault()
     if (!query) return
+    if (query.toLowerCase() === 'new') {
+      setQuery("")
+      return
+    }
     navigate(`/order/${query}`)
     setQuery("")
   }

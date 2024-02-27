@@ -1,12 +1,16 @@
-//import { useState } from "react";
+import { useState } from "react"
+import { Form, redirect } from "react-router-dom"
+import { createOrder } from "../../services/apiRestaurant"
 
 // https://uibakery.io/regex-library/phone-number
-/* const isValidPhone = (str) =>
+const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
     str
-  ); */
+  )
+console.log(isValidPhone)
 
-/* const fakeCart = [
+
+const fakeCart = [
   {
     pizzaId: 12,
     name: "Mediterranean",
@@ -28,17 +32,18 @@
     unitPrice: 15,
     totalPrice: 15,
   },
-]; */
+]
 
 function CreateOrder() {
-  // const [withPriority, setWithPriority] = useState(false);
-//  const cart = fakeCart;
+  const [withPriority, setWithPriority] = useState(false)
+  const cart = fakeCart
 
   return (
     <div>
       <h2>Ready to order? Let&apos;s go!</h2>
 
-      <form>
+      {/* <Form method="POST" action="/post/new"> */}
+      <Form method="POST" >
         <div>
           <label>First Name</label>
           <input type="text" name="customer" required />
@@ -63,18 +68,31 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
+            value={withPriority}
+            onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor="priority">Want to yo give your order priority?</label>
         </div>
 
         <div>
+          <input type='hidden' name="cart" value={JSON.stringify(cart)}/>
           <button>Order now</button>
         </div>
-      </form>
+      </Form>
     </div>
-  );
+  )
 }
 
-export default CreateOrder;
+export async function action({ request }) {
+  const formData = await request.formData()
+  const data = Object.fromEntries(formData)
+  const order = {
+    ...data,
+    cart: JSON.parse(data.cart),
+    priority: data.priority === "true"
+  }
+  const newOrder = await createOrder(order)
+  return redirect(`/order/${newOrder.id}`)
+}
+
+export default CreateOrder
