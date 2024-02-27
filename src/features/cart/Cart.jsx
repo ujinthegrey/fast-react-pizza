@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-/* const fakeCart = [
+const fakeCart = [
   {
     pizzaId: 12,
     name: 'Mediterranean',
@@ -22,10 +22,11 @@ import { Link } from 'react-router-dom';
     unitPrice: 15,
     totalPrice: 15,
   },
-]; */
+];
 
 function Cart() {
-  //const cart = fakeCart;
+  const cart = fakeCart;
+  console.log(cart[0]);
 
   return (
     <div>
