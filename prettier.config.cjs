@@ -1,4 +1,5 @@
+/* eslint-disable no-undef */
 module.exports = {
-    plugins: ['prettier-plugin-tailwindcss'],
-    singleQuote: true
+    plugins: [require('prettier-plugin-tailwindcss')],
+    singleQuote: true,
 }
