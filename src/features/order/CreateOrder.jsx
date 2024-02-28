@@ -80,7 +80,13 @@ function CreateOrder() {
 
         <div>
           <input type='hidden' name="cart" value={JSON.stringify(cart)}/>
-          <button disabled={isSubmitting}>{isSubmitting ? 'Plasing order...' : 'Order now'}</button>
+          <button
+            //disabled={isSubmitting}
+            disabled={true}
+            className="bg-emerald-400 hover:bg-emerald-300 uppercase font-bold py-4 px-8 tracking-widest rounded-lg transition-colors focus:outline-none focus:ring focus:ring-emerald-300 focus:bg-emerald-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-300"
+          >
+            {isSubmitting ? 'Plasing order...' : 'Order now'}
+          </button>
         </div>
       </Form>
     </div>
