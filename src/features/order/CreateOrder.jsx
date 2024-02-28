@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom"
 import { createOrder } from "../../services/apiRestaurant"
+import Button from "../../UI/Button"
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -49,13 +50,13 @@ function CreateOrder() {
       <Form method="POST" >
         <div>
           <label>First Name</label>
-          <input type="text" name="customer" required />
+          <input type="text" name="customer" required className="input"/>
         </div>
 
         <div>
           <label>Phone number</label>
           <div>
-            <input type="tel" name="phone" required />
+            <input type="tel" name="phone" required className="input"/>
           </div>
           {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
@@ -63,7 +64,12 @@ function CreateOrder() {
         <div>
           <label>Address</label>
           <div>
-            <input type="text" name="address" required />
+            <input
+              type="text"
+              name="address"
+              required 
+              className="input"
+            />
           </div>
         </div>
 
@@ -74,19 +80,16 @@ function CreateOrder() {
             id="priority"
             value={withPriority}
             onChange={(e) => setWithPriority(e.target.checked)}
+            className="h-6 w-6 accent-emerald-500 focus:ring focus:ring-emerald-200"
           />
           <label htmlFor="priority">Want to give your order priority?</label>
         </div>
 
         <div>
           <input type='hidden' name="cart" value={JSON.stringify(cart)}/>
-          <button
-            //disabled={isSubmitting}
-            disabled={true}
-            className="bg-emerald-400 hover:bg-emerald-300 uppercase font-bold py-4 px-8 tracking-widest rounded-lg transition-colors focus:outline-none focus:ring focus:ring-emerald-300 focus:bg-emerald-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-300"
-          >
+          <Button disabled={isSubmitting}>
             {isSubmitting ? 'Plasing order...' : 'Order now'}
-          </button>
+          </Button>
         </div>
       </Form>
     </div>
