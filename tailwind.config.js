@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: "IBM Plex Mono, monospace"
+    },    
+    extend: {
+      colors: {
+        pizza: '#123456',
+      },
+      height: {
+        screen: '100dvh',
+      }
+    },
   },
   plugins: [],
 }
