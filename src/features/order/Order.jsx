@@ -1,5 +1,5 @@
 // Test ID: IIDSAT Test 2 ID: CQE92U
-
+import OrderItem from './OrderItem'
 
 import { useLoaderData } from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant"
@@ -28,29 +28,34 @@ import {
     const deliveryIn = calcMinutesLeft(estimatedDelivery)
   
     return (
-      <div>
-        <div>
-          <h2>Status</h2>
-  
-          <div>
-            {priority && <span>Priority</span>}
-            <span>{status} order</span>
+      <div className="px-3 py-6 space-y-8">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <h2 className="text-xl font-semibold">Order # {id} status</h2>  
+          <div className="space-x-2">
+            {priority && <span className="bg-red-500 rounded-full py-1 px-4 text-sm uppercase font-semibold text-red-200 tracking-widest">Priority</span>}
+            <span className="bg-emerald-600 rounded-full py-1 px-4 text-sm uppercase font-semibold text-emerald-200 tracking-widest">{status} order</span>
           </div>
         </div>
   
-        <div>
-          <p>
+        <div className="flex items-center justify-between flex-wrap gap-2 bg-zinc-300 p-5">
+          <p className="font-medium">
             {deliveryIn >= 0
               ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
               : "Order should have arrived"}
           </p>
-          <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
+          <p className="text-sm text-zinc-500">(Estimated delivery: {formatDate(estimatedDelivery)})</p>
         </div>
+
+        <ul className='divide-y-4 divide-zinc-100 border-b-4'>
+          {cart.map((item) => (
+            <OrderItem item={item} key={item.id} />
+          ))}       
+        </ul>
   
-        <div>
-          <p>Price pizza: {formatCurrency(orderPrice)}</p>
-          {priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
-          <p>To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
+        <div className="space-y-3 bg-zinc-300 p-5">
+          <p className="text-sm font-medium text-zinc-500">Price pizza: {formatCurrency(orderPrice)}</p>
+          {priority && <p className="text-sm font-medium text-zinc-500">Price priority: {formatCurrency(priorityPrice)}</p>}
+          <p className="font-bold text-zinc-500">To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
         </div>
       </div>
     );
