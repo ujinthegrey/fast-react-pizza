@@ -49,7 +49,7 @@ function CreateOrder() {
       <h2 className="text-xl font-semibold mb-8">Ready to order? Let&apos;s go!</h2>
 
       {/* <Form method="POST" action="/post/new"> */}
-      <Form method="POST" >
+      <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>
           <input type="text" name="customer" required className="input grow" defaultValue={username}/>

@@ -7,7 +7,6 @@ function AppLayout() {
 
   const navigation = useNavigation()
   const isLoading = navigation.state === 'loading'
-  console.log(isLoading);
 
   return (
     <div className='h-screen grid grid-rows-[auto_1fr_auto]'>
