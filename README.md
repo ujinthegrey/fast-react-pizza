@@ -1,6 +1,6 @@
-#FAST REACT PIZZA
+# FAST REACT PIZZA
 
-##This is a Vite + React application where:
+## This is a Vite + React application where:
 
 - users can odred one ore more pizzas from a menu
 - no users accouns required; users just input their names before using the app
@@ -14,7 +14,7 @@
 - each order get a unique ID that should be displayed, so the user can later look up their order
 - users are able to mark their order as ]priority] even after it has been placed
 
-##Technologies of the app:
+## Technologies of the app:
 
 - Vite
 - React
