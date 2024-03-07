@@ -1,4 +1,4 @@
-// Test ID: IIDSAT Test 2 ID: CQE92U
+// Test ID: IIDSAT Test 2 ID: CQE92U Test 3 ID (no priority): Y8XCRN 
 import OrderItem from './OrderItem'
 
 import { useFetcher, useLoaderData } from "react-router-dom"
@@ -10,6 +10,7 @@ import {
     formatDate,
   } from "../../utils/helpers"
 import { useEffect } from 'react'
+import UpdateOrder from './UpdateOrder'
     
   function Order() {
 
@@ -20,8 +21,6 @@ import { useEffect } from 'react'
     useEffect(function() {
       if (!fetcher.data && fetcher.state === 'idle') fetcher.load('/menu')
     }, [fetcher])
-
-    console.log(fetcher.data)
 
     // Everyone can search for all orders, so for privacy reasons we're gonna exclude names or address, these are only for the restaurant staff
     const {
@@ -73,8 +72,10 @@ import { useEffect } from 'react'
           {priority && <p className="text-sm font-medium text-zinc-500">Price priority: {formatCurrency(priorityPrice)}</p>}
           <p className="font-bold text-zinc-500">To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
         </div>
+
+        {!priority && <UpdateOrder order={order} />}
       </div>
-    );
+    )
   }
 
   export async function loader({ params }) {

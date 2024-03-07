@@ -28,7 +28,7 @@ function Cart() {
         <Button type='secondary' onClick={() => dispatch(clearCart())}>Clear cart</Button>
       </div>
     </div>
-  );
+  )
 }
 
-export default Cart;
+export default Cart
