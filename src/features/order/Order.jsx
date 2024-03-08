@@ -78,6 +78,7 @@ import UpdateOrder from './UpdateOrder'
     )
   }
 
+  // eslint-disable-next-line react-refresh/only-export-components
   export async function loader({ params }) {
     const order = await getOrder(params.orderId)
     return order

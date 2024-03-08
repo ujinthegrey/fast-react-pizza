@@ -14,6 +14,7 @@ function UpdateOrder({ order }) {
 
 export default UpdateOrder
 
+// eslint-disable-next-line react-refresh/only-export-components
 export async function action({ params }) {
     const data = {priority: true}
     await updateOrder(params.orderId, data)
