@@ -11,7 +11,7 @@ function Home() {
         <h1 className="sm:text-2xl md:text-3xl text-2xl font-bold mb-8">
           The best pizza.
           <br />
-          <span className="text-emerald-400">
+          <span className="text-emerald-500">
             Straight out of the oven, straight to you.
           </span>
         </h1>

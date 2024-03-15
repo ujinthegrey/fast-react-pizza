@@ -23,7 +23,7 @@ function Cart() {
         {cart.map(item => <CartItem item={item} key={item.pizzaId}/>)}
       </ul>
 
-      <div className='mt-6 space-x-2'>
+      <div className='mt-6 space-x-2 space-y-4'>
         <Button type="primary" to="/order/new">Order pizzas</Button>
         <Button type='secondary' onClick={() => dispatch(clearCart())}>Clear cart</Button>
       </div>
